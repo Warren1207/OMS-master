@@ -28,6 +28,20 @@ class OrderService extends Service {
         return result;
     }
 
+    /** 查询单条订单数据 **/
+    * get() {
+        const id = this.ctx.params.id;
+        const result = yield this.app.mysql.get('ORDERS', { id: id });
+        return result;
+    }
+
+    /** 查询单条订单子表数据 **/
+    * getDetail() {
+        const number = this.ctx.params.number;
+        const result = yield this.app.mysql.get('ORDERS_DETAIL', { number: number });
+        return result;
+    }
+
     /**订单新增 */
     * insert() {
         const { ctx,app } = this;
